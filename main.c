@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-#define d20art \
+#define D20_ART \
  "       _-_.\n" \
  "    _-',^. `-_.\n" \
  "._-' ,'   `.   `-_ \n" \
@@ -16,7 +16,7 @@
  "    `-_, :!;;;''\n" \
  "        `-!'\n"
 
-#define d12art \
+#define D12_ART \
  "    _,--\"^\"--._\n" \
  "  ,'\\         /`.\n" \
  ",'   \\_______/   `.\n" \
@@ -29,7 +29,7 @@
  "   `-.._  |  _,,-'\n" \
  "        ``\"''\n"
 
-#define d10art \
+#define D10_ART \
   "    ,'.\n" \
   "  ,'   `.\n" \
   ",'_______`.\n" \
@@ -37,7 +37,7 @@
   " \\       /\n" \
   "  \\_____/ \n"
 
-#define d8art \
+#define D8_ART \
     "    /\\\n" \
     "   /  \\\n" \
     "  / \e[1m%02d\e[0m \\\n" \
@@ -46,13 +46,13 @@
     "   \\  /\n" \
     "    \\/\n"
 
-#define d6art \
+#define D6_ART \
     "│‾‾‾‾‾‾‾‾│\n" \
     "│   \e[1m%02d\e[0m   │\n" \
     "│        │\n" \
     "│________│\n"
 
-#define d4art \
+#define D4_ART \
  "      /\\\n" \
  "     /  \\\n" \
  "    / \e[1m%02d\e[0m \\\n" \
@@ -71,10 +71,10 @@ int main(int argc, char* argv[]) {
 	srand(milliseconds);
 
 	int value = roll(20);
-	printf(d20art, value);
-	printf(d12art, value);
-	printf(d10art, value);
-	printf(d8art, value);
-	printf(d6art, value);
-	printf(d4art, value);
+	printf(D20_ART, value);
+	printf(D12_ART, value);
+	printf(D10_ART, value);
+	printf(D8_ART, value);
+	printf(D6_ART, value);
+	printf(D4_ART, value);
 }
