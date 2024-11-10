@@ -59,7 +59,6 @@
  "   /      \\\n" \
  "  /________\\\n"
 
-#define GET_ART(size) D##size##_ART //TODO: make this work idk >_>
 
 int dice[6] = {20, 12, 10, 8, 6, 4};
 
@@ -85,8 +84,25 @@ int get_closest(int size) {
   return closest_die;
 }
 
+const char* get_art_const(int size) {
+  switch(size){
+    case 20: return D20_ART;
+    case 12: return D12_ART;
+    case 10: return D10_ART;
+    case 8: return D8_ART;
+    case 6: return D6_ART;
+    case 4: return D4_ART;
+  }
+}
+
+void get_art(int size, char* buffer, size_t buffer_size, int value){
+  snprintf(buffer, buffer_size, get_art_const(size), value);
+}
+
 void print_die(int size){
-  printf("%s\n", GET_ART(size));
+  char buffer[234]; // smallest value that works. dont ask how i know :')
+  get_art(size, buffer, sizeof(buffer), roll(size));
+  printf("%s", buffer);
 }
 
 int main(int argc, char* argv[]) {
