@@ -60,6 +60,13 @@ $(BUILD_DIR)/%.o : $(SOURCE_DIR)/%.c
 	# the same name as the .o file.
 	$(CC) $(CC_FLAGS) $(INCLUDEPATHS) -MMD -c $< -o $@
 
+# Install target: copies the binary to /usr/local/bin
+install: $(BIN)
+	install -m 755 $(BIN) /usr/local/bin/
+
+# Uninstall target: removes the binary from /usr/local/bin
+uninstall:
+	rm -f /usr/local/bin/$(BIN)
 
 .PHONY : clean
 clean:

@@ -17,6 +17,10 @@ roll 2d6
 ```
 sudo make install
 ```
+To uninstall:
+```
+sudo make uninstall
+```
 
 
 ## ASCII art
