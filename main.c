@@ -59,9 +59,34 @@
  "   /      \\\n" \
  "  /________\\\n"
 
+#define GET_ART(size) D##size##_ART //TODO: make this work idk >_>
+
+int dice[6] = {20, 12, 10, 8, 6, 4};
+
 int roll(int size) {
 	int num = (rand() % size) + 1;
 	return num;
+}
+
+int get_closest(int size) {
+  int i;
+  int absdiff[6];
+  for(i=0;i<6;i++) {
+    absdiff[i] = abs(dice[i] - size);
+  }
+  int min = absdiff[0];
+  int closest_die;
+  for(i=0;i<6;i++){
+    if(absdiff[i] < min){
+      min = absdiff[i];
+      closest_die = dice[i];
+    }
+  }
+  return closest_die;
+}
+
+void print_die(int size){
+  printf("%s\n", GET_ART(size));
 }
 
 int main(int argc, char* argv[]) {
@@ -71,10 +96,5 @@ int main(int argc, char* argv[]) {
 	srand(milliseconds);
 
 	int value = roll(20);
-	printf(D20_ART, value);
-	printf(D12_ART, value);
-	printf(D10_ART, value);
-	printf(D8_ART, value);
-	printf(D6_ART, value);
-	printf(D4_ART, value);
+  print_die(20);
 }
