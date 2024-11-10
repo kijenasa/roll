@@ -13,6 +13,12 @@ Different dice size and counts can be provided:
 roll 2d6
 ```
 
+## Installation
+```
+sudo make install
+```
+
+
 ## ASCII art
 Icosahedron by Michael Naylor (d20)
 ```
