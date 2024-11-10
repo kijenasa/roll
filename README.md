@@ -1,6 +1,8 @@
 # roll
-
 A CLI tool for rolling dice, made for DnD
+
+![](https://github.com/kijenasa/roll/blob/main/examples/roll_command_example.gif)
+TODO: make the gif higher quality
 
 ## Usage
 To roll one d20:
@@ -16,7 +18,7 @@ roll 2d6
 ## Installation
 To install:
 ```
-sudo make install
+sudo make install && sudo make install
 ```
 To uninstall:
 ```
