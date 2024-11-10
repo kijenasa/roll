@@ -62,7 +62,7 @@
 
 int dice[6] = {20, 12, 10, 8, 6, 4};
 
-int roll(int size) {
+int get_random(int size) {
 	int num = (rand() % size) + 1;
 	return num;
 }
@@ -74,7 +74,7 @@ int get_closest(int size) {
     absdiff[i] = abs(dice[i] - size);
   }
   int min = absdiff[0];
-  int closest_die;
+  int closest_die = dice[0];
   for(i=0;i<6;i++){
     if(absdiff[i] < min){
       min = absdiff[i];
@@ -84,7 +84,7 @@ int get_closest(int size) {
   return closest_die;
 }
 
-const char* get_art_const(int size) {
+char* get_art_const(int size) {
   switch(size){
     case 20: return D20_ART;
     case 12: return D12_ART;
@@ -92,6 +92,7 @@ const char* get_art_const(int size) {
     case 8: return D8_ART;
     case 6: return D6_ART;
     case 4: return D4_ART;
+    default: return "if your seeing this something went wrong, uhh anyway heres your number: \e[1m%02d\e[0m\n";
   }
 }
 
@@ -99,10 +100,17 @@ void get_art(int size, char* buffer, size_t buffer_size, int value){
   snprintf(buffer, buffer_size, get_art_const(size), value);
 }
 
-void print_die(int size){
+void print_die(int size, int value){
   char buffer[234]; // smallest value that works. dont ask how i know :')
-  get_art(size, buffer, sizeof(buffer), roll(size));
+  get_art(size, buffer, sizeof(buffer), value);
   printf("%s", buffer);
+}
+
+void roll(int size, int count){
+  int i = count;
+  for(;i>0;i--){
+    print_die(get_closest(size), get_random(size));
+  }
 }
 
 int main(int argc, char* argv[]) {
@@ -111,6 +119,5 @@ int main(int argc, char* argv[]) {
 	long milliseconds = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	srand(milliseconds);
 
-	int value = roll(20);
-  print_die(20);
+  roll(21,1);
 }
