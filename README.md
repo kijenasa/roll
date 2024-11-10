@@ -18,7 +18,7 @@ roll 2d6
 ## Installation
 To install:
 ```
-sudo make install && sudo make install
+sudo make install && sudo make clean
 ```
 To uninstall:
 ```
