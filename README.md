@@ -2,6 +2,17 @@
 
 A CLI tool for rolling dice, made for DnD
 
+## Usage
+To roll one d20:
+```
+roll
+```
+
+Different dice size and counts can be provided:
+```
+roll 2d6
+```
+
 ## ASCII art
 Icosahedron by Michael Naylor (d20)
 ```
