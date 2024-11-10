@@ -60,10 +60,16 @@
  "  /________\\\n"
 
 
+#define DEFAULT_SIZE 20
+#define DEFAULT_COUNT 1
+
 int dice[6] = {20, 12, 10, 8, 6, 4};
+
+int total = 0;
 
 int get_random(int size) {
 	int num = (rand() % size) + 1;
+  total += num;
 	return num;
 }
 
@@ -119,5 +125,19 @@ int main(int argc, char* argv[]) {
 	long milliseconds = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	srand(milliseconds);
 
-  roll(21,1);
+  int count;
+  int size;
+
+  if (argc != 1){
+    sscanf(argv[1], "%dd%d", &count, &size);
+  } else {
+    count = DEFAULT_COUNT;
+    size = DEFAULT_SIZE;
+  }
+
+  roll(size, count);
+
+  if(count > 1){
+    printf("Total: %d\n", total);
+  }
 }
