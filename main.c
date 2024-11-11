@@ -65,11 +65,8 @@
 
 int dice[6] = {20, 12, 10, 8, 6, 4};
 
-int total = 0;
-
 int get_random(int size) {
 	int num = (rand() % size) + 1;
-  total += num;
 	return num;
 }
 
@@ -112,10 +109,12 @@ void print_die(int size, int value){
   printf("%s", buffer);
 }
 
-void roll(int size, int count){
+void roll(int size, int count, int *total){
   int i = count;
   for(;i>0;i--){
-    print_die(get_closest(size), get_random(size));
+    int result = get_random(size);
+    *total += result;
+    print_die(get_closest(size), result);
   }
 }
 
@@ -135,7 +134,9 @@ int main(int argc, char* argv[]) {
     size = DEFAULT_SIZE;
   }
 
-  roll(size, count);
+  int total = 0;
+
+  roll(size, count, &total);
 
   if(count > 1){
     printf("Total: %d\n", total);
